@@ -1,0 +1,5 @@
+uppercut
+jab
+cross
+rear_hook
+unknown
