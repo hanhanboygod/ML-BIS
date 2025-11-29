@@ -369,6 +369,25 @@ Each frame:
 - People should be visible (not too small in frame)
 - Lower detection threshold in code (currently 0.1)
 
+### Issue: Codec not found
+When trying to execute realtime_inference.py:
+```
+[ERROR:0@44.106] global cap_ffmpeg_impl.hpp:3207 open Could not find encoder for codec_id=27, error: Encoder not found
+[ERROR:0@44.106] global cap_ffmpeg_impl.hpp:3285 open VIDEOIO/FFMPEG: Failed to initialize VideoWriter
+⚠ H.264 codec failed, trying XVID...
+OpenCV: FFMPEG: tag 0x44495658/'XVID' is not supported with codec id 12 and format 'mp4 / MP4 (MPEG-4 Part 14)'
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/'mp4v'
+```
+**Solutions:**
+```
+# Install FFmpeg with x264 encoder
+sudo apt-get update
+sudo apt-get install -y ffmpeg libx264-dev
+
+# Verify H.264 codec is available
+ffmpeg -codecs | grep 264
+```
+
 ## Output Video Format
 
 Output videos include:

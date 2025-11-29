@@ -101,7 +101,7 @@ class PersonTracker:
         Get current feature window for classification.
         
         Returns:
-            Array of shape (51, window_size) or None if buffer not full
+            Array of shape (window_size, 17, 2) or None if buffer not full
         """
         if len(self.keypoints_buffer) < self.window_size:
             return None
@@ -109,8 +109,9 @@ class PersonTracker:
         # Convert deque to array: (window_size, 17, 3)
         keypoints_array = np.array(list(self.keypoints_buffer))
         
-        # Reshape to 2D: (51, window_size)
-        feature_window = keypoints_array.reshape(self.window_size, -1).T
+        # Extract only x, y coordinates (discard confidence)
+        # Shape: (window_size, 17, 2)
+        feature_window = keypoints_array[:, :, :2]
         
         return feature_window
 
@@ -248,9 +249,6 @@ class RealtimeClassifier:
         Returns:
             Dict mapping tracker_id to (bbox, keypoints)
         """
-        if not self.trackers:
-            return {}
-        
         matches = {}
         used_detections = set()
         
@@ -290,16 +288,15 @@ class RealtimeClassifier:
         Classify action from feature window.
         
         Args:
-            feature_window: Array of shape (51, window_size)
+            feature_window: Array of shape (window_size, 17, 2)
             
         Returns:
             Tuple of (label, confidence)
         """
-        # Prepare input for CNN
-        # Most CNNs expect (batch, height, width, channels)
-        # Treat keypoint features as 2D image: (51, window_size, 1)
-        input_data = feature_window[..., np.newaxis]  # Add channel dimension
-        input_data = np.expand_dims(input_data, axis=0)  # Add batch dimension
+        # Prepare input for CNN-LSTM model
+        # Expected shape: (batch, window_size, 17, 2, 1)
+        input_data = feature_window[..., np.newaxis]  # Add channel dimension: (64, 17, 2, 1)
+        input_data = np.expand_dims(input_data, axis=0)  # Add batch dimension: (1, 64, 17, 2, 1)
         
         # Run inference
         predictions = self.cnn_model.predict(input_data, verbose=0)[0]
