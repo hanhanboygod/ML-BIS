@@ -411,7 +411,7 @@ class MoveNetKeypointExtractor:
         
         # Normalize temporal dimension to target_frames
         normalized_keypoints = self._normalize_temporal_dimension(
-            keypoints_array, target_frames
+            keypoints_array, target_frames, fps=fps
         )
         
         # Reshape to 2D: (51, target_frames)
@@ -435,39 +435,39 @@ class MoveNetKeypointExtractor:
     def _normalize_temporal_dimension(
         self,
         keypoints: np.ndarray,
-        target_frames: int
+        target_frames: int,
+        fps: float = 30.0,
+        target_duration: float = 2.0
     ) -> np.ndarray:
         """
-        Normalize the temporal dimension by resampling to fixed number of frames.
-        
-        Args:
-            keypoints: Array of shape (num_frames, 17, 3)
-            target_frames: Target number of frames
-            
-        Returns:
-            Resampled array of shape (target_frames, 17, 3)
+        Normalize temporal dimension by resampling to fixed duration (2s) -> fixed frames (64).
+        Preserves action speed by padding or cropping.
         """
         num_frames = keypoints.shape[0]
+        duration = num_frames / fps
         
-        if num_frames == target_frames:
-            return keypoints
+        # Input time axis (relative to the start of the clip)
+        t_in = np.arange(num_frames) / fps
         
-        # Use linear interpolation to resample
-        # Create indices for resampling
-        original_indices = np.arange(num_frames)
-        target_indices = np.linspace(0, num_frames - 1, target_frames)
+        # Align the END of the input clip with the END of the target duration (2.0s)
+        # If duration < 2.0s: t_in starts > 0. The beginning (0 to start) is padded with the first frame.
+        # If duration > 2.0s: t_in starts < 0. The beginning is cropped.
+        start_offset = target_duration - duration
+        t_in = t_in + start_offset
         
-        # Interpolate each keypoint coordinate
+        # Output time axis (0 to 2.0s)
+        t_out = np.linspace(0, target_duration, target_frames)
+        
+        # Interpolate
         resampled = np.zeros((target_frames, 17, 3))
-        
         for kp_idx in range(17):
             for coord_idx in range(3):
                 resampled[:, kp_idx, coord_idx] = np.interp(
-                    target_indices,
-                    original_indices,
+                    t_out,
+                    t_in,
                     keypoints[:, kp_idx, coord_idx]
                 )
-        
+                
         return resampled
     
     def process_track(
@@ -513,6 +513,46 @@ class MoveNetKeypointExtractor:
         
         # Collect keypoints from annotated frames
         all_keypoints = []
+        
+        # --- Pre-roll Context Extraction ---
+        # If action is shorter than 2.0s, try to extract previous frames from video
+        # to provide correct "idle/pre-action" context for the model
+        annotated_duration = len(boxes) / fps
+        target_duration = 2.0
+        
+        if annotated_duration < target_duration:
+            needed_seconds = target_duration - annotated_duration
+            needed_frames = int(np.ceil(needed_seconds * fps))
+            
+            start_frame = int(boxes[0]['frame'])
+            # We can go back at most to frame 0
+            pre_start_frame = max(0, start_frame - needed_frames)
+            
+            if pre_start_frame < start_frame:
+                print(f"  Extracting pre-roll context: frames {pre_start_frame} to {start_frame-1}")
+                
+                # Use the first annotated frame's bbox as reference to find the person
+                ref_box = boxes[0]
+                ref_bbox = {
+                    'xtl': float(ref_box['xtl']),
+                    'ytl': float(ref_box['ytl']),
+                    'xbr': float(ref_box['xbr']),
+                    'ybr': float(ref_box['ybr'])
+                }
+                
+                for frame_idx in range(pre_start_frame, start_frame):
+                    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_idx)
+                    ret, frame = cap.read()
+                    if not ret:
+                        continue
+                        
+                    # Extract using reference bbox
+                    kp = self.extract_keypoints_from_frame(frame, ref_bbox)
+                    all_keypoints.append(kp)
+                    if frame_idx % 10 == 0:
+                        print(f"  Processed pre-roll frame {frame_idx}...", end='\r')
+                print(f"  Extracted {len(all_keypoints)} pre-roll frames.        ")
+
         processed_count = 0
         
         for box_data in boxes:
@@ -540,10 +580,10 @@ class MoveNetKeypointExtractor:
             
             processed_count += 1
             if processed_count % 10 == 0:
-                print(f"  Processed {processed_count}/{len(boxes)} frames...", end='\r')
+                print(f"  Processed {processed_count}/{len(boxes)} annotated frames...", end='\r')
         
         cap.release()
-        print(f"  Processed {processed_count} frames total.    ")
+        print(f"  Total frames collected: {len(all_keypoints)} ({len(all_keypoints) - processed_count} pre-roll + {processed_count} annotated)")
         
         if len(all_keypoints) == 0:
             raise ValueError(f"No frames were successfully processed for track {track_id}")
@@ -553,7 +593,7 @@ class MoveNetKeypointExtractor:
         
         # Normalize temporal dimension to target_frames
         normalized_keypoints = self._normalize_temporal_dimension(
-            keypoints_array, target_frames
+            keypoints_array, target_frames, fps=fps
         )
         
         # Reshape to 2D: (51, target_frames)
@@ -684,6 +724,47 @@ class MoveNetKeypointExtractor:
         print(f"Successful: {successful}")
         print(f"Failed: {len(tracks) - successful}")
         print(f"Output directory: {output_path}")
+        
+        # Verification step
+        if successful > 0:
+            print("\n" + "=" * 60)
+            print("VERIFICATION")
+            print("=" * 60)
+            # Check the first successful output
+            for res in results:
+                if res['success']:
+                    npy_path = res['output']
+                    try:
+                        data = np.load(npy_path)
+                        print(f"Checking: {os.path.basename(npy_path)}")
+                        print(f"  Shape: {data.shape} (Expected: (51, {target_frames}))")
+                        
+                        if data.shape != (51, target_frames):
+                            print("  ❌ Shape mismatch!")
+                        else:
+                            print("  ✅ Shape correct.")
+                            
+                        # Check for NaN values
+                        if np.isnan(data).any():
+                            print("  ❌ Contains NaN values!")
+                        else:
+                            print("  ✅ No NaN values.")
+                            
+                        # Check value range (should be normalized 0-1 for coordinates)
+                        # Note: Confidence scores (every 3rd value) are also 0-1
+                        min_val = np.min(data)
+                        max_val = np.max(data)
+                        print(f"  Value range: [{min_val:.4f}, {max_val:.4f}]")
+                        
+                        if min_val < 0 or max_val > 1.0:
+                             print("  ⚠️ Values outside [0, 1] range (might be okay if padding uses 0)")
+                        else:
+                             print("  ✅ Values within expected range.")
+                             
+                        break # Only check one file
+                    except Exception as e:
+                        print(f"  ❌ Error verifying file: {e}")
+                    break
     
     def process_video_directory(
         self,

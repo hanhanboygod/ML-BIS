@@ -111,7 +111,7 @@ This installs:
 #### Step 6: Verify GPU Detection
 ```bash
 # Check GPU is detected by TensorFlow
-python check_gpu.py
+python3 check_gpu.py
 ```
 
 **Expected output:**

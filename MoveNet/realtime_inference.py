@@ -61,22 +61,23 @@ print("-" * 60)
 
 
 class PersonTracker:
-    """Track individual people across frames with sliding window buffer."""
+    """Track individual people across frames with time-based sliding window."""
     
-    def __init__(self, person_id: int, initial_bbox: Dict, window_size: int = 64):
+    def __init__(self, person_id: int, initial_bbox: Dict, window_duration: float = 2.0):
         """
         Initialize person tracker.
         
         Args:
             person_id: Unique ID for this person
             initial_bbox: Initial bounding box {'xtl', 'ytl', 'xbr', 'ybr'}
-            window_size: Size of sliding window (must match training)
+            window_duration: Duration of sliding window in seconds (default: 2.0s)
         """
         self.id = person_id
         self.bbox = initial_bbox
-        self.window_size = window_size
-        self.keypoints_buffer = deque(maxlen=window_size)
-        self.last_seen_frame = 0
+        self.window_duration = window_duration
+        # Buffer stores tuples of (timestamp, keypoints)
+        self.keypoints_buffer = [] 
+        self.last_seen_time = 0.0
         self.current_label = "detecting..."
         self.confidence = 0.0
         self.color = self._generate_color()
@@ -86,34 +87,67 @@ class PersonTracker:
         np.random.seed(self.id * 42)
         return tuple(map(int, np.random.randint(50, 255, 3)))
     
-    def update(self, bbox: Dict, keypoints: np.ndarray, frame_num: int):
+    def update(self, bbox: Dict, keypoints: np.ndarray, timestamp: float):
         """Update tracker with new detection."""
         self.bbox = bbox
-        self.keypoints_buffer.append(keypoints)
-        self.last_seen_frame = frame_num
+        self.keypoints_buffer.append((timestamp, keypoints))
+        self.last_seen_time = timestamp
+        
+        # Remove old frames (keep only last window_duration seconds)
+        cutoff_time = timestamp - self.window_duration
+        while self.keypoints_buffer and self.keypoints_buffer[0][0] < cutoff_time:
+            self.keypoints_buffer.pop(0)
     
-    def is_active(self, current_frame: int, max_missing_frames: int = 30) -> bool:
+    def is_active(self, current_time: float, max_missing_seconds: float = 1.0) -> bool:
         """Check if tracker is still active (recently seen)."""
-        return (current_frame - self.last_seen_frame) <= max_missing_frames
+        return (current_time - self.last_seen_time) <= max_missing_seconds
     
-    def get_feature_window(self) -> Optional[np.ndarray]:
+    def get_feature_window(self, target_frames: int = 64) -> Optional[np.ndarray]:
         """
-        Get current feature window for classification.
+        Get current feature window for classification, resampled to target_frames.
         
         Returns:
-            Array of shape (window_size, 17, 2) or None if buffer not full
+            Array of shape (target_frames, 17, 2) or None if not enough data
         """
-        if len(self.keypoints_buffer) < self.window_size:
+        if len(self.keypoints_buffer) < 2:
             return None
+            
+        # Get timestamps and keypoints
+        timestamps = np.array([t for t, _ in self.keypoints_buffer])
+        keypoints = np.array([k for _, k in self.keypoints_buffer]) # (N, 17, 3)
         
-        # Convert deque to array: (window_size, 17, 3)
-        keypoints_array = np.array(list(self.keypoints_buffer))
+        # Check if we have enough duration (e.g., at least 1/3 of the window)
+        duration = timestamps[-1] - timestamps[0]
+        if duration < (self.window_duration * 0.3):
+            return None
+            
+        # Create target timestamps (uniformly spaced over the actual duration covered)
+        # Note: We map the ACTUAL duration to 64 frames to preserve speed
+        # If we mapped 2.0s to 64 frames but only had 1.0s of data, we'd get half a window.
+        # Here we assume the model expects "filled" windows. 
+        # Ideally, we want to resample the last 2.0s.
         
-        # Extract only x, y coordinates (discard confidence)
-        # Shape: (window_size, 17, 2)
-        feature_window = keypoints_array[:, :, :2]
+        current_time = timestamps[-1]
+        start_time = current_time - self.window_duration
         
-        return feature_window
+        # We need to interpolate the data within [start_time, current_time]
+        # to exactly 'target_frames' points.
+        target_times = np.linspace(start_time, current_time, target_frames)
+        
+        # Perform interpolation for each keypoint coordinate
+        # keypoints shape: (N, 17, 3) -> we only need x,y (N, 17, 2)
+        keypoints_xy = keypoints[:, :, :2]
+        resampled_window = np.zeros((target_frames, 17, 2))
+        
+        for kp_idx in range(17):
+            for coord_idx in range(2): # x and y
+                resampled_window[:, kp_idx, coord_idx] = np.interp(
+                    target_times,
+                    timestamps,
+                    keypoints_xy[:, kp_idx, coord_idx]
+                )
+                
+        return resampled_window
 
 
 class RealtimeClassifier:
@@ -166,6 +200,10 @@ class RealtimeClassifier:
         # Performance metrics
         self.fps_history = deque(maxlen=30)
         self.last_frame_time = time.time()
+        
+        # Frame skipping for FPS normalization
+        self.target_fps = 30.0
+        self.frame_accumulator = 0.0
     
     def calculate_iou(self, box1: Dict, box2: Dict) -> float:
         """Calculate IoU between two bounding boxes."""
@@ -241,7 +279,8 @@ class RealtimeClassifier:
     
     def match_detections_to_trackers(
         self,
-        detections: List[Tuple[Dict, np.ndarray]]
+        detections: List[Tuple[Dict, np.ndarray]],
+        current_time: float
     ) -> Dict[int, Tuple[Dict, np.ndarray]]:
         """
         Match detections to existing trackers using IoU.
@@ -254,7 +293,7 @@ class RealtimeClassifier:
         
         # Match each tracker to best detection
         for tracker_id, tracker in self.trackers.items():
-            if not tracker.is_active(self.frame_count):
+            if not tracker.is_active(current_time):
                 continue
             
             best_iou = 0.0
@@ -276,7 +315,8 @@ class RealtimeClassifier:
         # Create new trackers for unmatched detections
         for idx, (bbox, keypoints) in enumerate(detections):
             if idx not in used_detections:
-                new_tracker = PersonTracker(self.next_person_id, bbox, self.window_size)
+                # Initialize with 2.0s window duration
+                new_tracker = PersonTracker(self.next_person_id, bbox, window_duration=2.0)
                 self.trackers[self.next_person_id] = new_tracker
                 matches[self.next_person_id] = (bbox, keypoints)
                 self.next_person_id += 1
@@ -319,20 +359,21 @@ class RealtimeClassifier:
             Annotated frame with bounding boxes and labels
         """
         self.frame_count += 1
+        current_time = time.time()
         
         # Detect people
         detections = self.detect_people(frame)
         
         # Match to trackers
-        matches = self.match_detections_to_trackers(detections)
+        matches = self.match_detections_to_trackers(detections, current_time)
         
         # Update trackers and classify
         for tracker_id, (bbox, keypoints) in matches.items():
             tracker = self.trackers[tracker_id]
-            tracker.update(bbox, keypoints, self.frame_count)
+            tracker.update(bbox, keypoints, current_time)
             
             # Try to classify if buffer is full
-            feature_window = tracker.get_feature_window()
+            feature_window = tracker.get_feature_window(target_frames=64)
             if feature_window is not None:
                 label, confidence = self.classify_person(feature_window)
                 if confidence > self.confidence_threshold:
@@ -342,7 +383,7 @@ class RealtimeClassifier:
         # Remove inactive trackers
         inactive_ids = [
             tid for tid, tracker in self.trackers.items()
-            if not tracker.is_active(self.frame_count)
+            if not tracker.is_active(current_time)
         ]
         for tid in inactive_ids:
             del self.trackers[tid]
@@ -351,7 +392,6 @@ class RealtimeClassifier:
         annotated_frame = self.draw_annotations(frame)
         
         # Calculate FPS
-        current_time = time.time()
         fps = 1.0 / (current_time - self.last_frame_time + 1e-6)
         self.fps_history.append(fps)
         self.last_frame_time = current_time
@@ -406,7 +446,8 @@ class RealtimeClassifier:
             
             # Draw keypoints (if recent)
             if len(tracker.keypoints_buffer) > 0:
-                recent_keypoints = tracker.keypoints_buffer[-1]
+                # Unpack timestamp and keypoints from the last buffer entry
+                _, recent_keypoints = tracker.keypoints_buffer[-1]
                 height, width = frame.shape[:2]
                 
                 for kp in recent_keypoints:

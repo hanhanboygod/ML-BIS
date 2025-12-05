@@ -33,14 +33,14 @@ Both use **MoveNet MultiPose** for detecting and tracking multiple people simult
        ▼
 ┌─────────────────────────────────┐
 │  Sliding Window Buffer          │
-│  - Maintain 64 frames per person│
+│  - Maintain 2.0s history/person │
 │  - Update with new keypoints    │
 └──────┬──────────────────────────┘
        │
        ▼
 ┌─────────────────────────────────┐
 │  Feature Extraction             │
-│  - Extract (51, 64) array       │
+│  - Resample to (51, 64) array   │
 │  - Normalize like training data │
 └──────┬──────────────────────────┘
        │
@@ -69,10 +69,11 @@ Both use **MoveNet MultiPose** for detecting and tracking multiple people simult
 ### 2. Person Tracking
 - **IoU-based matching**: Tracks same person across frames
 - **Automatic ID assignment**: New people get new IDs
-- **Inactive tracker removal**: Removes people who disappear for >30 frames
+- **Inactive tracker removal**: Removes people who disappear for >1.0 second
 
 ### 3. Sliding Window Classification
-- Maintains **64-frame buffer** per person (configurable)
+- Maintains **2.0-second buffer** per person (time-based)
+- **Dynamic Resampling**: Interpolates variable frame counts to fixed 64 frames
 - Classifies action when buffer fills
 - Updates in real-time as new frames arrive
 
