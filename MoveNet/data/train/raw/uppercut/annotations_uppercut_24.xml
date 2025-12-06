@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <task>
+      <id>1795960</id>
+      <name>uppercut_24</name>
+      <size>442</size>
+      <mode>interpolation</mode>
+      <overlap>5</overlap>
+      <bugtracker></bugtracker>
+      <created>2025-11-20 02:40:19.530452+00:00</created>
+      <updated>2025-11-20 03:01:56.263999+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>441</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>3290102</id>
+          <start>0</start>
+          <stop>441</stop>
+          <url>https://app.cvat.ai/api/jobs/3288741</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>yutsen0526</username>
+        <email>yutsen0526@gmail.com</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>uppercut</name>
+          <color>#1d8837</color>
+          <type>any</type>
+          <attributes>
+            <attribute>
+              <name>video_id</name>
+              <mutable>False</mutable>
+              <input_type>text</input_type>
+              <default_value>uppercut_24</default_value>
+              <values>uppercut_24</values>
+            </attribute>
+            <attribute>
+              <name>camera_angle</name>
+              <mutable>False</mutable>
+              <input_type>select</input_type>
+              <default_value>45deg</default_value>
+              <values>45deg
+front
+side</values>
+            </attribute>
+          </attributes>
+        </label>
+      </labels>
+      <original_size>
+        <width>576</width>
+        <height>1024</height>
+      </original_size>
+      <source>Learn This Deadly Boxing Combo [5VRcEMg3kjw].mp4</source>
+    </task>
+    <dumped>2025-11-20 03:02:31.502492+00:00</dumped>
+  </meta>
+  <track id="0" label="uppercut" source="manual">
+    <box frame="413" keyframe="1" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="516.30" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="414" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="519.09" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="415" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="521.89" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="416" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="524.68" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="417" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="527.47" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="418" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="530.26" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="419" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="533.06" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="420" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="535.85" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="421" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="538.64" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="422" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="541.44" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="423" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="544.23" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="424" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="547.02" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="425" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="549.81" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="426" keyframe="0" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="552.61" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="427" keyframe="1" outside="0" occluded="0" xtl="65.13" ytl="430.80" xbr="555.40" ybr="1024.00" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="428" keyframe="0" outside="0" occluded="0" xtl="72.00" ytl="429.43" xbr="562.27" ybr="1022.63" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="429" keyframe="0" outside="0" occluded="0" xtl="78.86" ytl="428.06" xbr="569.13" ybr="1021.25" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="430" keyframe="1" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="431" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="432" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="433" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="434" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="435" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="436" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="437" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="438" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="439" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="440" keyframe="0" outside="0" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+    <box frame="441" keyframe="1" outside="1" occluded="0" xtl="85.73" ytl="426.68" xbr="576.00" ybr="1019.88" z_order="0">
+      <attribute name="video_id">uppercut_24</attribute>
+      <attribute name="camera_angle">45deg</attribute>
+    </box>
+  </track>
+</annotations>

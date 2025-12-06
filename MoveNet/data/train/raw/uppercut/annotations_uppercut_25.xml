@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <task>
+      <id>1812803</id>
+      <name>uppercut_25</name>
+      <size>2472</size>
+      <mode>interpolation</mode>
+      <overlap>5</overlap>
+      <bugtracker></bugtracker>
+      <created>2025-11-26 10:43:20.661036+00:00</created>
+      <updated>2025-11-28 10:37:56.645738+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>2471</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>3310933</id>
+          <start>0</start>
+          <stop>2471</stop>
+          <url>https://app.cvat.ai/api/jobs/3309572</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>yutsen0526</username>
+        <email>yutsen0526@gmail.com</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>uppercut</name>
+          <color>#1d8837</color>
+          <type>any</type>
+          <attributes>
+            <attribute>
+              <name>video_id</name>
+              <mutable>False</mutable>
+              <input_type>text</input_type>
+              <default_value>uppercut_25</default_value>
+              <values>uppercut_25</values>
+            </attribute>
+            <attribute>
+              <name>camera_angle</name>
+              <mutable>False</mutable>
+              <input_type>select</input_type>
+              <default_value>side</default_value>
+              <values>side
+front
+45deg</values>
+            </attribute>
+          </attributes>
+        </label>
+      </labels>
+      <original_size>
+        <width>1080</width>
+        <height>1920</height>
+      </original_size>
+      <source>Boxing Professional REVEALS Secrets To Landing an Uppercut [K5qYd1axXuc].mp4</source>
+    </task>
+    <dumped>2025-11-28 10:38:36.136146+00:00</dumped>
+  </meta>
+  <track id="0" label="uppercut" source="manual">
+    <box frame="2415" keyframe="1" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2416" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2417" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2418" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2419" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2420" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2421" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2422" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2423" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2424" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2425" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2426" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2427" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2428" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2429" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2430" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2431" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2432" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2433" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2434" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2435" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2436" keyframe="0" outside="0" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+    <box frame="2437" keyframe="1" outside="1" occluded="0" xtl="22.40" ytl="99.05" xbr="824.81" ybr="1902.85" z_order="0">
+      <attribute name="video_id">uppercut_25</attribute>
+      <attribute name="camera_angle">side</attribute>
+    </box>
+  </track>
+</annotations>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <task>
+      <id>1795950</id>
+      <name>uppercut23</name>
+      <size>554</size>
+      <mode>interpolation</mode>
+      <overlap>5</overlap>
+      <bugtracker></bugtracker>
+      <created>2025-11-20 02:36:38.941440+00:00</created>
+      <updated>2025-11-20 02:57:03.888895+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>553</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>3290098</id>
+          <start>0</start>
+          <stop>553</stop>
+          <url>https://app.cvat.ai/api/jobs/3288737</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>yutsen0526</username>
+        <email>yutsen0526@gmail.com</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>uppercut</name>
+          <color>#1d8837</color>
+          <type>any</type>
+          <attributes>
+            <attribute>
+              <name>video_id</name>
+              <mutable>False</mutable>
+              <input_type>text</input_type>
+              <default_value>uppercut23</default_value>
+              <values>uppercut23</values>
+            </attribute>
+            <attribute>
+              <name>camera_angle</name>
+              <mutable>False</mutable>
+              <input_type>select</input_type>
+              <default_value>front</default_value>
+              <values>front
+side
+45deg</values>
+            </attribute>
+          </attributes>
+        </label>
+      </labels>
+      <original_size>
+        <width>1080</width>
+        <height>1920</height>
+      </original_size>
+      <source>2 Uppercut Combos To Stay Offline #training #boxing #uppercut #slip [rpar4jg8wRg].mp4</source>
+    </task>
+    <dumped>2025-11-20 02:57:28.178578+00:00</dumped>
+  </meta>
+  <track id="1" label="uppercut" source="manual">
+    <box frame="446" keyframe="1" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="447" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="448" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="449" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="450" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="451" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="452" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="453" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="454" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="455" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="456" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="457" keyframe="0" outside="0" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+    <box frame="458" keyframe="1" outside="1" occluded="0" xtl="82.42" ytl="113.60" xbr="1005.83" ybr="1917.00" z_order="0">
+      <attribute name="camera_angle">front</attribute>
+      <attribute name="video_id">uppercut23</attribute>
+    </box>
+  </track>
+</annotations>
