@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <task>
+      <id>1721579</id>
+      <name>uppercut_15</name>
+      <size>17834</size>
+      <mode>interpolation</mode>
+      <overlap>5</overlap>
+      <bugtracker></bugtracker>
+      <created>2025-10-24 13:15:59.976795+00:00</created>
+      <updated>2025-10-24 13:37:04.639226+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>17833</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>3159549</id>
+          <start>0</start>
+          <stop>17833</stop>
+          <url>https://app.cvat.ai/api/jobs/3158132</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>yu_yen</username>
+        <email>yycyenn@gmail.com</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>cross</name>
+          <color>#731c07</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+        <label>
+          <name>uppercut</name>
+          <color>#1d8837</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+      </labels>
+      <original_size>
+        <width>1920</width>
+        <height>1080</height>
+      </original_size>
+      <source>Top 5 Ways To Setup The REAR UPPERCUT ｜ BAZOOKATRAINING.COM.mp4</source>
+    </task>
+    <dumped>2025-10-24 13:37:20.659509+00:00</dumped>
+  </meta>
+  <track id="0" label="uppercut" source="manual">
+    <box frame="10656" keyframe="1" outside="0" occluded="0" xtl="703.70" ytl="254.92" xbr="1017.68" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10657" keyframe="0" outside="0" occluded="0" xtl="703.70" ytl="254.92" xbr="1075.44" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10658" keyframe="1" outside="0" occluded="0" xtl="703.70" ytl="254.92" xbr="1133.20" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10659" keyframe="1" outside="0" occluded="0" xtl="703.70" ytl="254.92" xbr="1172.90" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10660" keyframe="0" outside="0" occluded="0" xtl="716.33" ytl="254.92" xbr="1172.90" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10661" keyframe="0" outside="0" occluded="0" xtl="728.97" ytl="254.92" xbr="1172.90" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10662" keyframe="1" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1172.90" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10663" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1177.60" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10664" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1182.30" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10665" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1187.00" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10666" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1191.70" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10667" keyframe="1" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1196.40" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10668" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1193.33" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10669" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1190.26" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10670" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1187.19" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10671" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1184.12" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10672" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1181.05" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10673" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1177.98" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10674" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1174.91" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10675" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1171.84" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10676" keyframe="0" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1168.77" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10677" keyframe="1" outside="0" occluded="0" xtl="741.60" ytl="254.92" xbr="1165.70" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10678" keyframe="0" outside="0" occluded="0" xtl="735.30" ytl="244.11" xbr="1126.00" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10679" keyframe="1" outside="0" occluded="0" xtl="729.00" ytl="233.30" xbr="1086.30" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10680" keyframe="1" outside="1" occluded="0" xtl="729.00" ytl="233.30" xbr="1028.60" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10681" keyframe="1" outside="1" occluded="0" xtl="729.00" ytl="209.80" xbr="1016.00" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10682" keyframe="1" outside="1" occluded="0" xtl="696.50" ytl="209.80" xbr="999.80" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10683" keyframe="1" outside="1" occluded="0" xtl="660.40" ytl="209.80" xbr="999.80" ybr="863.04" z_order="0">
+    </box>
+    <box frame="10684" keyframe="1" outside="1" occluded="0" xtl="591.80" ytl="209.80" xbr="999.80" ybr="863.04" z_order="0">
+    </box>
+  </track>
+</annotations>
