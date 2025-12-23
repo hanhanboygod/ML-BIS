@@ -1,9 +1,9 @@
 # Boxing Identification System (BIS)
 
-This project implements a real-time action recognition system for boxing, capable of detecting and classifying moves (Jab, Cross, Hook, Uppercut) from video streams or webcams. It utilizes **MoveNet** for pose estimation and a custom **CNN-LSTM** network for temporal action classification.
+This project implements a real-time action recognition system for boxing, capable of detecting and classifying moves (Jab, Cross, Hook, Uppercut) from video streams. It utilizes **MoveNet** for pose estimation and a custom **CNN-LSTM** network for temporal action classification.
 
 ## 1. Data Preparation (`MoveNet/extract_keypoints_to_2d.py`)
-
+(**Refer: ./MoveNet/README.md and /MoveNet/EXTRACT_KEYPOINTS_TO_2D_GUIDE.md**)<br>
 The data pipeline converts raw video footage into normalized keypoint sequences suitable for training.
 
 *   **Input**: MP4 videos and CVAT XML annotation files.
@@ -18,7 +18,7 @@ The data pipeline converts raw video footage into normalized keypoint sequences 
 *   **Output**: `.npy` files containing keypoint sequences of shape `(51, 64)` (17 keypoints × 3 values × 64 frames).
 
 ## 2. Model Structure (`model_src/BIS.ipynb`)
-
+(**Refer: ./model_src/BIS.ipynb**)<br>
 The classification model is a hybrid **CNN-LSTM** architecture designed to learn spatiotemporal features.
 
 *   **Input Shape**: `(Batch, 64, 17, 2, 1)` - (Time, Keypoints, Coordinates, Channels).
@@ -31,8 +31,8 @@ The classification model is a hybrid **CNN-LSTM** architecture designed to learn
     *   **Dense Layers**: Fully connected layers with Dropout for regularization.
     *   **Softmax Output**: Probabilities for 4 classes: `Cross`, `Uppercut`, `Rear Hook`, `Jab`.
 
-## 3. Real-time Inference (`MoveNet/realtime_inference.py`)
-
+## 3. Full Video Labeling (`MoveNet/realtime_inference.py`)
+(**Refer: ./MoveNet/README.md and ./MoveNet/REALTIME_INFERENCE_GUIDE.md**)<br>
 The inference script performs live detection and classification.
 
 *   **Multi-Person Tracking**: Detects and tracks multiple people simultaneously using a sliding window approach.
