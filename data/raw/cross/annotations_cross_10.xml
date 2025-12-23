@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <task>
+      <id>1739257</id>
+      <name>cross_10</name>
+      <size>3785</size>
+      <mode>interpolation</mode>
+      <overlap>5</overlap>
+      <bugtracker></bugtracker>
+      <created>2025-10-31 06:40:02.996942+00:00</created>
+      <updated>2025-10-31 06:57:37.653528+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>3784</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>3194622</id>
+          <start>0</start>
+          <stop>3784</stop>
+          <url>https://app.cvat.ai/api/jobs/3193249</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>yu_yen</username>
+        <email>yycyenn@gmail.com</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>cross</name>
+          <color>#731c07</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+        <label>
+          <name>uppercut</name>
+          <color>#1d8837</color>
+          <type>any</type>
+          <attributes>
+          </attributes>
+        </label>
+      </labels>
+      <original_size>
+        <width>1920</width>
+        <height>1080</height>
+      </original_size>
+      <source>3種距離！3種後手直拳！應對各種不同距離的方式！【60s學格鬥－後手直拳變化】.mp4</source>
+    </task>
+    <dumped>2025-10-31 06:57:54.321750+00:00</dumped>
+  </meta>
+  <track id="0" label="cross" source="manual">
+    <box frame="470" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="938.29" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="471" keyframe="0" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="943.24" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="472" keyframe="0" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="948.19" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="473" keyframe="0" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="953.15" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="474" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="958.10" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="475" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1019.50" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="476" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1086.30" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="477" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1126.00" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="478" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1149.50" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="479" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1131.50" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="480" keyframe="0" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1124.30" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="481" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1117.10" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="482" keyframe="0" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1092.75" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="483" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1068.40" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="484" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1043.10" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="485" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="1012.40" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="486" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="979.90" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="487" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="940.20" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="488" keyframe="1" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="929.40" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="489" keyframe="0" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="929.40" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="490" keyframe="0" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="929.40" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="491" keyframe="0" outside="0" occluded="0" xtl="490.77" ytl="188.15" xbr="929.40" ybr="1080.00" z_order="0">
+    </box>
+    <box frame="492" keyframe="1" outside="1" occluded="0" xtl="490.77" ytl="188.15" xbr="929.40" ybr="1080.00" z_order="0">
+    </box>
+  </track>
+</annotations>
