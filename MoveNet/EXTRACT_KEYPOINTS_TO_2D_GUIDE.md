@@ -19,10 +19,10 @@ This script extracts pose keypoints from video clips using MoveNet and converts 
 Extract keypoints from all tracks in a single CVAT annotation file:
 
 ```bash
-python extract_keypoints_to_2d.py annotation --annotation data/train/raw/annotations_rear_hook_01.xml --output data/train/transformed/
+python extract_keypoints_to_2d.py annotation --annotation data/train/raw/annotations_rear_hook_01.xml --output data/train/transformed/rear_hook/
 ```
 
-### 2. Process All Annotation Files in Directory
+### 2. Process All Annotation Files in Directory (recommended)
 
 Process all annotation files matching a pattern:
 
