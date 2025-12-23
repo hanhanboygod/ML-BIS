@@ -22,7 +22,7 @@ Usage:
     # Video directory
     python realtime_inference.py --model model.h5 --labels labels.txt --source videos/ --pattern "*.mp4"
 
-Author: ML Final Project
+Generated partially by Github Copilot
 Date: 2025-11-12
 """
 

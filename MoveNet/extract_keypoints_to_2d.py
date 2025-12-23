@@ -32,7 +32,7 @@ Output shape: (51, num_frames) where:
 - Rows: 51 features (17 keypoints × 3 coordinates each: y, x, confidence)
 - Cols: Normalized number of frames (default: 64)
 
-Author: Generated for ML Final Project
+Generated partially by Github Copilot
 Date: 2025-10-25
 """
 
